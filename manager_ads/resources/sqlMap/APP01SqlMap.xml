@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="app.dao.APP01Dao">
+	<resultMap type="userBean" id="userObject">
+		<result property="id" column="uid"/>
+		<result property="name" column="name"/>
+	</resultMap>
+	<select id="selectAllDev" resultMap="userObject">
+		select uid,name from ads_mob_user
+		where uid in (select uid from ads_role where role_name = 'dev')
+	</select>
+</mapper>

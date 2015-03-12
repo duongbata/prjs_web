@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="manager.common.dao.GenericDao">
+	<resultMap type="userBean" id="userObject">
+		<result property="id" column="uid"/>
+		<result property="name" column="name"/>
+		<result property="address" column="address"/>
+		<result property="city" column="city"/>
+		<result property="phone" column="phone"/>
+		<result property="email" column="email"/>
+		<result property="password" column="upass"/>
+	</resultMap>
+	<select id="getUser" parameterType="userBean" resultMap="userObject">
+		SELECT
+			uid,
+			NAME,
+			addrees,
+			city,
+			phone,
+			email,
+			upass
+		FROM
+			ads_mob_user
+		WHERE uid = #{id}
+		AND upass = SHA1(#{password})
+	</select>
+	<select id="listUser" resultMap="userObject">
+		SELECT
+			uid,
+			NAME,
+			addrees,
+			city,
+			phone,
+			email
+		FROM
+			ads_mob_user;
+	</select>
+	<select id="getRoleNameByUid" parameterType="int" resultType="string">
+		SELECT
+			role_name
+		FROM
+			ads_role
+		WHERE
+			uid = #{id}
+	</select>
+	<select id="getUserById" parameterType="int" resultMap="userObject">
+		SELECT
+			uid,
+			NAME,
+			addrees,
+			city,
+			phone,
+			email,
+			upass
+		FROM
+			ads_mob_user
+		WHERE uid = #{id}
+	</select>
+	<insert id="insertUser" parameterType="userBean">
+		INSERT INTO ads_mob_user (uid, upass)
+		VALUES
+			(#{id}, #{password})
+	</insert>
+	<insert id="insertRoleCustomer" parameterType="java.util.Map">
+		INSERT INTO ads_role (
+			role_id,
+			uid,
+			role_name,
+			used_flag
+		)
+		VALUES
+			(#{roleId}, #{userId}, 'user', '1')
+	</insert>
+	<select id="getMaxRoleId" resultType="int">
+		select MAX(role_id) from ads_role
+	</select>
+</mapper>

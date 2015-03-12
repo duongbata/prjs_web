@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="manager.ADV03.dao.ADV03Dao">
+	<resultMap type="bannerBean" id="bannerObject">
+		<result property="bannerId" column="banner_id"/>
+		<result property="campaignName" column="campaign_name"/>
+		<result property="campaignId" column="campaign_id"/>
+		<result property="bannerName" column="banner_name"/>
+		<result property="bannerDescription" column="banner_des"/>
+		<result property="typeName" column="type_name"/>
+		<result property="startTime" column="start_time"/>
+		<result property="stopTime" column="stop_time"/>
+		<result property="statusName" column="status_name"/>
+		<result property="statusId" column="status_id"/>
+		<result property="image1" column="image1"/>
+		<result property="image2" column="image2"/>
+		<result property="androidUrl" column="android_url"/>
+		<result property="iosUrl" column="ios_url"/>
+		<result property="windowsUrl" column="windows_url"/>
+		<result property="bannerType" column="banner_type"/>
+		<result property="bannerTypeName" column="banner_type_name"/>
+		<result property="osTarget" column="os_target"/>
+		<result property="maxView" column="max_view"/>
+		<result property="maxClick" column="max_click"/>
+		<result property="userId" column="uid"/>
+		<result property="maxClickPerDay" column="max_click_per_day"/>
+		<result property="maxViewPerDay" column="max_view_per_day"/>
+	</resultMap>
+	<resultMap type="campaignBean" id="campaignObject">
+		<result property="campaignId" column="campaignId"/>
+		<result property="campaignName" column="name"/>
+		<result property="description" column="des"/>
+		<result property="startTime" column="startTime"/>
+		<result property="stopTime" column="stopTime"/>
+	</resultMap>
+	<select id="getListBanner" resultMap="bannerObject" parameterType="campaignBean">
+		<!-- SELECT
+			ab.bannerId AS banner_id,
+			ac. NAME AS campaign_name,
+			ab. NAME AS banner_name,
+			ab.des AS banner_des,
+			abt.value AS type_name,
+			ab.startTime AS start_time,
+			ab.stopTime AS stop_time,
+			ab.status AS status,
+			abs.value as status_name,
+			ab.os_target AS os_target
+		FROM
+			ads_banner AS ab
+		INNER JOIN ads_banner_status AS abs ON ab.status = abs.status
+		INNER JOIN ads_banner_type AS abt ON ab.bannerType = abt.bannerType
+		INNER JOIN ads_campaign AS ac ON ab.campaignId = ac.campaignId
+		WHERE ac.campaignId = #{campaignId} -->
+		SELECT
+			ab.bannerId AS banner_id,
+			ab. NAME AS banner_name,
+			ab.startTime AS start_time,
+			ab.stopTime AS stop_time,
+			ab.max_click as max_click,
+			ab.max_view as max_view,
+			ab.android_url as android_url,
+			ab.ios_url as ios_url,
+			ab.windows_url as windows_url
+		FROM
+			ads_banner AS ab
+		INNER JOIN ads_campaign AS ac ON ab.campaignId = ac.campaignId
+		AND ac.uid = ab.uid
+		WHERE ac.campaignId = #{campaignId}
+		AND ac.uid = #{userId}
+	</select>
+	<select id="getBannerById" parameterType="int" resultMap="bannerObject">
+		SELECT
+			ab.bannerId AS banner_id,
+			ab.campaignId as campaign_id,
+			ab.NAME AS banner_name,
+			ab.des AS banner_des,
+			ab.startTime AS start_time,
+			ab.stopTime AS stop_time,
+			ab.image1 as image1,
+			ab.image2 as image2,
+			ab.bannerType as banner_type,
+			ab.max_click as max_click,
+			ab.max_view as max_view,
+			ab.android_url as android_url,
+			ab.ios_url as ios_url,
+			ab.windows_url as windows_url,
+			ab.status_id as status_id,
+			ab.max_click_per_day as max_click_per_day,
+			ab.max_view_per_day as max_view_per_day
+		FROM
+			ads_banner AS ab
+		WHERE ab.bannerId = #{bannerId}
+	</select>
+	<select id="getAllCampaign" resultType="map">
+		SELECT
+			campaignId as campaign_id,
+			name as campaign_name
+		FROM
+			ads_campaign
+	</select>
+	<select id="getAllBannerStatus" resultType="map">
+		select status,value from ads_banner_status
+	</select>
+	<select id="getAllBannerType" resultType="map">
+		select bannerType, value from ads_banner_type
+	</select>
+	<update id="editBanner" parameterType="bannerBean">
+		UPDATE ads_banner
+		SET  name = #{bannerName}
+				, des = #{bannerDescription}
+				, bannerType = #{bannerType}
+				, startTime = #{startTime}
+				, stopTime = #{stopTime}
+				, image1 = #{image1}
+				, image2 = #{image2}
+				, android_url = #{androidUrl}
+				, ios_url = #{iosUrl}
+				, windows_url = #{windowsUrl}
+				, max_click = #{maxClick}
+				, max_view = #{maxView}
+				, status_id = #{statusId}
+				, max_click_per_day = #{maxClickPerDay}
+				, max_view_per_day = #{maxViewPerDay}
+		WHERE bannerId = #{bannerId}
+	</update>
+	<insert id="insertSampleBanner" parameterType="bannerBean">
+		INSERT INTO ads_banner(
+			bannerId
+			,campaignId
+			,name
+			,des
+			,bannerType 
+			,image1
+			,image2
+			,uid
+			,android_url
+			,ios_url
+			,windows_url
+			,startTime
+			,stopTime
+		) VALUES (
+			#{bannerId}
+			, -1
+			,#{bannerName}
+			,#{bannerDescription}
+			,#{bannerType}
+			,#{image1}
+			,#{image2}
+			,#{userId}
+			,#{androidUrl}
+			,#{iosUrl}
+			,#{windowsUrl}
+			,#{startTime}
+			,#{stopTime}
+		)
+	</insert>
+	<delete id="deleteBanner" parameterType="int">
+		DELETE FROM ads_banner
+		WHERE bannerId = #{bannerId}
+	</delete>
+	<select id="selectListCampaignOfUser" parameterType="int" resultMap="campaignObject">
+		SELECT
+			campaignId,
+			NAME,
+			des,
+			startTime,
+			stopTime
+		FROM
+			ads_campaign
+		where uid = #{userId}
+	</select>
+	<select id="selectListSampleBanner" parameterType="bannerBean" resultMap="bannerObject">
+		SELECT
+			ab.bannerId,
+			ab.NAME as banner_name
+		FROM
+			ads_banner as ab
+		INNER JOIN ads_banner_type as abt on ab.bannerType = abt.bannerType
+		WHERE
+			uid = #{userId}
+		AND campaignId = -1
+	</select>
+	<select id="getSampleBannerById" parameterType="bannerBean" resultMap="bannerObject">
+		SELECT
+			ab.bannerId,
+			ab.NAME as banner_name,
+			ab.des as banner_des,
+			ab.bannerType as banner_type,
+			abt.value as banner_type_name,
+			ab.startTime as start_time,
+			ab.stopTime as stop_time,
+			ab.image1,
+			ab.image2,
+			ab.uid,
+			ab.android_url,
+			ab.ios_url,
+			ab.windows_url
+		FROM
+			ads_banner as ab
+		INNER JOIN ads_banner_type as abt on ab.bannerType = abt.bannerType
+		WHERE
+			uid = #{userId}
+		AND ab.bannerId = #{bannerId}
+	</select>
+	<select id="getMaxIdOfBanner" resultType="java.lang.Integer">
+		SELECT MAX(bannerId)
+		FROM ads_banner
+	</select>
+	<insert id="insertBannerToCampaign" parameterType="bannerBean">
+		INSERT INTO ads_banner(
+			bannerId
+			,campaignId
+			,name
+			,des
+			,bannerType 
+			,startTime
+			,stopTime
+			,image1
+			,image2
+			,uid
+			,max_click
+			,max_view
+			,android_url
+			,ios_url
+			,windows_url
+			,status_id
+		) VALUES (
+			#{bannerId}
+			, #{campaignId}
+			,#{bannerName}
+			,#{bannerDescription}
+			,#{bannerType}
+			,#{startTime}
+			,#{stopTime}
+			,#{image1}
+			,#{image2}
+			,#{userId}
+			,#{maxClick}
+			,#{maxView}
+			,#{androidUrl}
+			,#{iosUrl}
+			,#{windowsUrl}
+			,#{statusId}
+		)
+	</insert>
+	<update id="updateBannerBeanConfig" parameterType="bannerBean">
+		UPDATE ads_banner
+		SET max_click = #{maxClick}
+			, max_view = #{maxView}
+			, startTime = #{startTime}
+			, stopTime = #{stopTime}
+		WHERE bannerId = #{bannerId}
+	</update>
+	<select id="getMaxIdOfCampign" resultType="java.lang.Integer">
+		SELECT
+			MAX(campaignId)
+		FROM
+			ads_campaign
+	</select>
+	<insert id="insertCampaign" parameterType="campaignBean">
+		INSERT INTO ads_campaign (
+			campaignId,
+			NAME,
+			des,
+			uid,
+			startTime,
+			stopTime
+		)
+		VALUES(
+			#{campaignId}
+			, #{campaignName}
+			, #{description}
+			, #{userId}
+			, #{startTime}
+			, #{stopTime}
+		)
+	</insert>
+	<select id="getBannerTypeNameById" parameterType="int" resultType="string">
+		SELECT
+			value AS banner_type_name
+		FROM
+			ads_banner_type
+		WHERE
+			bannerType = #{bannerType}
+	</select>
+	<select id="getStatusNameById" parameterType="int" resultType="string">
+		SELECT
+			VALUE AS status_name
+		FROM
+			ads_banner_status
+		WHERE
+			STATUS = #{statusId}
+	</select>
+</mapper>

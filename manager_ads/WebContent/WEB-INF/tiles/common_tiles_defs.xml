@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="BASE" template="/WEB-INF/pages/common-layout.jsp">
+		<put-attribute name="scripts" value="/WEB-INF/pages/scripts.jsp"/>
+		<put-attribute name="styles" value="/WEB-INF/pages/styles.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/pages/header.jsp"/>
+	</definition>
+	<definition name="BASE.POPUP" template="/WEB-INF/pages/common-layout.jsp">
+		<put-attribute name="scripts" value="/WEB-INF/pages/scripts.jsp"/>
+		<put-attribute name="styles" value="/WEB-INF/pages/styles.jsp"/>
+		<put-attribute name="header" value=""/>
+	</definition>
+	<definition name="DETAIL" extends="BASE">
+		<put-attribute name="title" value="Chi tiết"/>
+		<put-attribute name="body" value="/WEB-INF/pages/detail.jsp"/>
+	</definition>
+	<definition name="MESSAGE" extends="BASE">
+		<put-attribute name="title" value="Message"/>
+		<put-attribute name="body" value="/WEB-INF/pages/message.jsp"/>
+	</definition>
+	<definition name="ERROR" template="/WEB-INF/pages/error.jsp"/>
+	<definition name="LOGIN" template="/WEB-INF/pages/login.jsp"/>
+	<definition name="SIGNIN" template="/WEB-INF/pages/signin.jsp"/>
+	<!-- ADV01 Start -->
+	<definition name="MANAGER.ADV01" extends="BASE">
+		<put-attribute name="title" value="Danh sách app quảng cáo"/>
+		<put-attribute name="body" value="/WEB-INF/pages/ADV01.jsp"/>
+	</definition>
+	<definition name="MANAGER.ADV01_2" extends="BASE.POPUP">
+		<put-attribute name="title" value="Thông tin chi tiết app"/>
+		<put-attribute name="body" value="/WEB-INF/pages/ADV01_2.jsp"/>
+	</definition>
+	<definition name="MANAGER.ADV01_3" extends="BASE.POPUP">
+		<put-attribute name="title" value="Thêm app"/>
+		<put-attribute name="body" value="/WEB-INF/pages/ADV01_3.jsp"/>
+	</definition>
+	<!-- ADV01 End -->
+	<!-- ADV02 Start -->
+	<definition name="MANAGER.ADV02" extends="BASE">
+		<put-attribute name="title" value="Quản lý App"/>
+		<put-attribute name="body" value="/WEB-INF/pages/ADV02.jsp"/>
+	</definition>
+	<definition name="MANAGER.ADV02_2" extends="BASE.POPUP">
+		<put-attribute name="title" value="Danh sách app"/>
+		<put-attribute name="body" value="/WEB-INF/pages/ADV02_2.jsp"/>
+	</definition>
+	<!-- ADV02 End -->
+	<!-- ADV03 Start -->
+	<definition name="MANAGER.ADV03" extends="BASE">
+		<put-attribute name="title" value="List Banner"/>
+		<put-attribute name="body" value="/WEB-INF/pages/ADV03.jsp"/>
+	</definition>
+	<definition name="MANAGER.ADV03_2" extends="BASE.POPUP">
+		<put-attribute name="title" value="Edit Banner"/>
+		<put-attribute name="body" value="/WEB-INF/pages/ADV03_2.jsp"/>
+	</definition>
+	<definition name="MANAGER.ADV03_3" extends="BASE">
+		<put-attribute name="title" value="Create Banner"/>
+		<put-attribute name="body" value="/WEB-INF/pages/ADV03_3.jsp"/>
+	</definition>
+	<definition name="MANAGER.ADV03_4" extends="BASE">
+		<put-attribute name="title" value="List Campaign"/>
+		<put-attribute name="body" value="/WEB-INF/pages/ADV03_4.jsp"/>
+	</definition>
+	<definition name="MANAGER.ADV03_5" extends="BASE.POPUP">
+		<put-attribute name="title" value="More Banner"/>
+		<put-attribute name="body" value="/WEB-INF/pages/ADV03_5.jsp"/>
+	</definition>
+	<!-- ADV03 End -->
+	<definition name="DANGNHAP" template="/WEB-INF/pages/dangnhap.jsp"/>
+	<definition name="ADMIN" template="/WEB-INF/pages/admin.jsp"/>
+	<!-- APP start -->
+	<definition name="APP01" extends="BASE">
+		<put-attribute name="title" value="Tạo group app"/>
+		<put-attribute name="body" value="/WEB-INF/pages/APP01.jsp"/>
+	</definition>
+	<definition name="NODE" template="/WEB-INF/pages/node.jsp"/>
+	<definition name="APP02" extends="BASE">
+		<put-attribute name="title" value="Tạo App"/>
+		<put-attribute name="body" value="/WEB-INF/pages/APP02.jsp"/>
+	</definition>
+	<definition name="APP03" extends="BASE">
+		<put-attribute name="title" value="List App"/>
+		<put-attribute name="body" value="/WEB-INF/pages/APP03.jsp"/>
+	</definition>
+	<definition name="APP03_2" extends="BASE">
+		<put-attribute name="title" value="Detail App"/>
+		<put-attribute name="body" value="/WEB-INF/pages/APP03_2.jsp"/>
+	</definition>
+	<definition name="APP04" extends="BASE">
+		<put-attribute name="title" value="Admod Config"/>
+		<put-attribute name="body" value="/WEB-INF/pages/APP04.jsp"/>
+	</definition>
+	<!-- APP stop -->
+	
+</tiles-definitions>
