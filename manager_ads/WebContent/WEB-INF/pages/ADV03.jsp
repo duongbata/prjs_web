@@ -4,15 +4,14 @@
 <link type="text/css" rel="stylesheet" href="resources/css/ADV03.css" />
 <link type="text/css" rel="stylesheet" href="resources/css/bootstrap-datetimepicker.min.css" />
 
+<script type="text/javascript" src="resources/js/ADV03.js"></script>
 <script type="text/javascript" src="resources/js/moment.js"></script>
 <script type="text/javascript" src="resources/js/vi.js"></script>
 <script type="text/javascript" src="resources/js/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="resources/js/ADV03.js"></script>
+
 <%-- <script type="text/javascript" src="resources/js/jquery-latest.min.js"></script> --%>
 <script>
-	$(function () {
-	    $('.datetimepicker').datetimepicker();
-	});
+	
 	
 </script>
 <s:form action="/ADV03_init" id="formListBanner">

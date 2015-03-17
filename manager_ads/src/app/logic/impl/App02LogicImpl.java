@@ -175,7 +175,7 @@ public class App02LogicImpl implements App02LogicIF{
 	@Override
 	public Map<String, String> getOsOfGroup(String groupId) {
 		Map<String, String> allOs = new HashMap<String, String>();
-		String patternGroup =RedisConstant.DB_ADS_DEV + ":uid:*:group:"+groupId+":apps";
+		/*String patternGroup =RedisConstant.DB_ADS_DEV + ":uid:*:group:"+groupId+":apps";
 		Set<String> keys = template.keys(patternGroup);
 		for (String key : keys) {
 			Set<String> apps = template.opsForSet().members(key);
@@ -191,8 +191,26 @@ public class App02LogicImpl implements App02LogicIF{
 					}
 				}
 			}
+		}*/
+		String patternGroup = RedisConstant.DB_ADS_DEV + ":uid:*:os:*:groups";
+		Set<String> keys = template.keys(patternGroup);
+		for (String key : keys) {
+			Set<String> groupOfUser = template.opsForSet().members(key);
+			if (groupOfUser != null && groupOfUser.size() > 0) {
+				for (String group:groupOfUser) {
+					String os = key.split(":")[6];
+					if (group.equals(groupId)) {
+						if ("android".equals(os)) {
+							allOs.put(APP01Action.OS_ANDROID_ID, os);
+						} else if ("ios".equals(os)) {
+							allOs.put(APP01Action.OS_IOS_ID, os);
+						} else if ("windows".equals(os)) {
+							allOs.put(APP01Action.OS_WINDOWS_ID, os);
+						}
+					}
+				}
+			}
 		}
-		
 		return allOs;
 	}
 	

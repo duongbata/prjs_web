@@ -17,6 +17,10 @@ $(document).on('click','.filterable .btn-filter',function(){
     }
 });
 
+$(document).on('click','.datetimepicker',function(){
+	 $(this).datetimepicker();
+}); 
+
 $(document).on('keyup','.filterable .filters input',function(e){
 	/* Ignore tab key */
     var code = e.keyCode || e.which;

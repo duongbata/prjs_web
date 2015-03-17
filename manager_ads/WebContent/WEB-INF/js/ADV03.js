@@ -90,6 +90,10 @@ $(document).ready(function(){
     });
 });
 
+$(function () {
+    $('.datetimepicker').datetimepicker();
+});
+
 function ajaxEditBannerConfig(tr){
 	var banner = new Object();
 	banner.maxClick = $(tr).find('.txtMaxClick').val();

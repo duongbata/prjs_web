@@ -8,9 +8,7 @@
 <script type="text/javascript" src="resources/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="resources/js/ADV03_4.js"></script>
 <script type="text/javascript">
-	 $(document).on('click','.datetimepicker',function(){
-		 $(this).datetimepicker();
-	}); 
+	
 </script>
 <div class="container">
 	<s:form action="/ADV03_saveListCampaign">

@@ -228,8 +228,11 @@ public class ADV03Action{
 				}
 			}
 		}
-		adv03Logic.insertBannerToCampaign(listBannerSelected, campaignId, info.getUser().getId());
-		
+		try {
+			adv03Logic.insertBannerToCampaign(listBannerSelected, campaignId, info.getUser().getId());
+		} catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 		return "success";
 	}
 	
