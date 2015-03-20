@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="BASE" template="/WEB-INF/pages/common-layout.jsp">
+		<put-attribute name="scripts" value="/WEB-INF/pages/scripts.jsp"/>
+		<put-attribute name="styles" value="/WEB-INF/pages/styles.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/pages/header.jsp"/>
+	</definition>
+	<definition name="PAGING" template="/WEB-INF/pages/paging.jsp"/>
+	<definition name="DETAIL" extends="BASE">
+		<put-attribute name="title" value="Chi tiết"/>
+		<put-attribute name="body" value="/WEB-INF/pages/detail.jsp"/>
+	</definition>
+	<definition name="MESSAGE" extends="BASE">
+		<put-attribute name="title" value="Message"/>
+		<put-attribute name="body" value="/WEB-INF/pages/message.jsp"/>
+	</definition>
+	<definition name="ERROR" template="/WEB-INF/pages/error.jsp"/>
+	<definition name="LOGIN" template="/WEB-INF/pages/login.jsp"/>
+	<definition name="SIGNIN" template="/WEB-INF/pages/signin.jsp"/>
+	<!-- APP start -->
+	<definition name="APP01" extends="BASE">
+		<put-attribute name="title" value="Tạo group app"/>
+		<put-attribute name="body" value="/WEB-INF/pages/APP01.jsp"/>
+	</definition>
+	<!-- APP stop -->
+		
+</tiles-definitions>
