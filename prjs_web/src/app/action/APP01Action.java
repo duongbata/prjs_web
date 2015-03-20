@@ -2,6 +2,7 @@ package app.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import manager.common.bean.InfoValue;
 import manager.common.bean.UserBean;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import app.bean.App01DataTrans;
+import app.bean.PointBean;
 import app.logic.App01LogicIF;
 
 @Controller
@@ -24,6 +26,9 @@ public class APP01Action{
 	public static final String OS_ANDROID_ID = "2";
 	
 	public static final String OS_WINDOWS_ID = "3";
+	
+	public List<PointBean> listPoint;
+	
 	/**
 	 * 
 	 */
@@ -52,7 +57,24 @@ public class APP01Action{
 		return "success";
 	}
 	
-	
+	@Action(value="/APP01_loadPoint"
+			, interceptorRefs={
+				@InterceptorRef(value="scope",params={"key","infoValue","session","info","autoCreateSession","true"})
+				, @InterceptorRef("basicStack")
+			}
+			, results={
+				@Result(name="success",type="json",params={"root","listPoint"})
+				
+			})
+	public String loadPoint() {
+		listPoint = new ArrayList<PointBean>();
+		Random ran = new Random();
+		for (int i = 1; i<50;i ++) {
+			PointBean p = new PointBean(String.valueOf(ran.nextInt(i) + 1),String.valueOf(ran.nextInt(i)+2),String.valueOf(ran.nextInt(i)+3));
+			listPoint.add(p);
+		}
+		return "success";
+	}
 	
 	public InfoValue getInfo() {
 		return info;
@@ -60,6 +82,14 @@ public class APP01Action{
 	
 	public void setInfo(InfoValue info) {
 		this.info = info;
+	}
+
+	public List<PointBean> getListPoint() {
+		return listPoint;
+	}
+
+	public void setListPoint(List<PointBean> listPoint) {
+		this.listPoint = listPoint;
 	}
 
 }
