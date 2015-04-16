@@ -1,5 +1,10 @@
 package app.action;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
@@ -22,12 +27,18 @@ public class APP02Action implements ModelDriven<APP02DataTrans>{
 	
 	private PointBean p;*/
 	
+	private String message;
+	
+	private String msg;
+	
 	@Action(value="/APP02_init"
 			, results={
 				@Result(name="success",location="APP02",type="tiles")
 				, @Result(name="failure",location="ERROR", type="tiles")
 			})
 	public String init() {
+		message = "{\"aps\":{\"alert\":\"Chúc bạn một ngày soi cầu may mắn\",\"sound\":\"default\",\"content-available\":1}}";
+		msg = "Dortmund";
 		APP02DataTrans app02DataTrans = new APP02DataTrans();
 		PointBean p = new PointBean();
 		p.setA("a");
@@ -57,12 +68,39 @@ public class APP02Action implements ModelDriven<APP02DataTrans>{
 				@Result(name="success",location="APP02",type="tiles")
 				, @Result(name="failure",location="ERROR", type="tiles")
 			})
-	public String updatePoint() {
+	public String updatePoint() throws IOException {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String body = getStringFromInputStream(request.getInputStream());
 		APP02DataTrans app02DataTrans = getModel();
 		PointBean p = app02DataTrans.getPoint();
 		System.out.println(p == null);
 		return "success";
 	}
+	
+	public static String getStringFromInputStream(InputStream is) {
+		  BufferedReader br = null;
+		  StringBuilder sb = new StringBuilder();
+		  try {
+		   br = new BufferedReader(new InputStreamReader(is));
+		   String line;
+		   while ((line = br.readLine()) != null) {
+		    sb.append(line);
+		   }
+		  } catch (IOException localIOException) {
+		   if (br != null)
+		    try {
+		     br.close();
+		    } catch (IOException localIOException1) {
+		    }
+		  } finally {
+		   if (br != null)
+		    try {
+		     br.close();
+		    } catch (IOException localIOException2) {
+		    }
+		  }
+		  return sb.toString();
+		 }
 	
 	/*public PointBean getPoint() {
 		return point;
@@ -83,5 +121,21 @@ public class APP02Action implements ModelDriven<APP02DataTrans>{
 	
 	public void setApp02DataTrans(APP02DataTrans app02DataTrans) {
 		this.app02DataTrans = app02DataTrans;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+	
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	public String getMsg() {
+		return msg;
+	}
+	
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 }
