@@ -18,3 +18,12 @@
 	          labels: [ "x", "A", "B" ]
 	        });
 </script> --%>
+<div class="container">
+	<div class="row">
+		<s:form action="App01_insertData">
+			<s:textfield name="name" value="%{name}"></s:textfield> <br/>
+			<s:submit value="Submit"/>
+			<s:token/>
+		</s:form>
+	</div>
+</div>

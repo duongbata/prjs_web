@@ -20,6 +20,7 @@
 	<definition name="ERROR" template="/WEB-INF/pages/error.jsp"/>
 	<definition name="LOGIN" template="/WEB-INF/pages/login.jsp"/>
 	<definition name="SIGNIN" template="/WEB-INF/pages/signin.jsp"/>
+	<definition name="INVALID_TOKEN" template="/WEB-INF/pages/invalid_token.jsp"/>
 	<!-- APP start -->
 	<definition name="APP01" extends="BASE">
 		<put-attribute name="title" value="Tạo group app"/>

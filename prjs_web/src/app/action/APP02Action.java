@@ -9,14 +9,20 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.Preparable;
 import com.opensymphony.xwork2.util.ValueStack;
 
 import app.bean.APP02DataTrans;
 import app.bean.PointBean;
 
 @Controller
-public class APP02Action implements ModelDriven<APP02DataTrans>{
+public class APP02Action extends ActionSupport implements Preparable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3557786159678372458L;
 	private APP02DataTrans app02DataTrans;
 	/*private PointBean point = new PointBean();
 	
@@ -39,6 +45,9 @@ public class APP02Action implements ModelDriven<APP02DataTrans>{
 	}
 	
 	@Action(value = "/APP02_callAjax"
+			, interceptorRefs = {
+				@InterceptorRef("paramsPrepareParamsStack")
+			}
 			, results = {
 				@Result(name="success", type="json", params={"root","point"})
 	})
@@ -58,7 +67,6 @@ public class APP02Action implements ModelDriven<APP02DataTrans>{
 				, @Result(name="failure",location="ERROR", type="tiles")
 			})
 	public String updatePoint() {
-		APP02DataTrans app02DataTrans = getModel();
 		PointBean p = app02DataTrans.getPoint();
 		System.out.println(p == null);
 		return "success";
@@ -72,10 +80,10 @@ public class APP02Action implements ModelDriven<APP02DataTrans>{
 		this.point = point;
 	}*/
 	
-	@Override
-	public APP02DataTrans getModel() {
-		return app02DataTrans;
+	public void prepare() throws Exception {
+		System.out.println(app02DataTrans == null);
 	}
+	
 	
 	public APP02DataTrans getApp02DataTrans() {
 		return app02DataTrans;

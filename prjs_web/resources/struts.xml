@@ -22,6 +22,13 @@
 		<result-types>
 			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
+		<interceptors>
+			<interceptor-stack name="paramsPrepareParamsStack">
+				<interceptor-ref name="params"/>
+				<interceptor-ref name="prepare"/>
+				<interceptor-ref name="params"/>
+			</interceptor-stack>
+		</interceptors>
 		<!-- <interceptors>
 			<interceptor name="baseInterceptor" class="manager.common.interceptor.BaseInterceptor"></interceptor>
 			<interceptor-stack name="baseStack">

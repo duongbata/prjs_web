@@ -29,6 +29,8 @@ public class APP01Action{
 	
 	public List<PointBean> listPoint;
 	
+	public String name;
+	
 	/**
 	 * 
 	 */
@@ -51,6 +53,25 @@ public class APP01Action{
 				, @Result(name="failure",location="ERROR", type="tiles")
 			})
 	public String init() {
+		name = "Dortmund";
+		App01DataTrans app01DataTrans = new App01DataTrans();
+		app01DataTrans.setMessage("Hello" + info.getUser().getId());
+		info.setDataTrans(app01DataTrans);
+		return "success";
+	}
+	
+	@Action(value="/App01_insertData"
+			, interceptorRefs={
+				@InterceptorRef(value="scope",params={"key","infoValue","session","info","autoCreateSession","true"})
+				, @InterceptorRef("token")
+				, @InterceptorRef("basicStack")
+			}
+			, results={
+				@Result(name="success",location="APP02_init",type="redirectAction")
+				, @Result(name="failure",location="ERROR", type="tiles")
+				, @Result(name="invalid.token",location="InvalidToken_init", type="redirectAction")
+			})
+	public String insertData() {
 		App01DataTrans app01DataTrans = new App01DataTrans();
 		app01DataTrans.setMessage("Hello" + info.getUser().getId());
 		info.setDataTrans(app01DataTrans);
@@ -90,6 +111,14 @@ public class APP01Action{
 
 	public void setListPoint(List<PointBean> listPoint) {
 		this.listPoint = listPoint;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
