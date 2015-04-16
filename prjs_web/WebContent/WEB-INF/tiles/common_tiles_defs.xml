@@ -30,6 +30,10 @@
 		<put-attribute name="title" value="Tạo group app"/>
 		<put-attribute name="body" value="/WEB-INF/pages/APP02.jsp"/>
 	</definition>
+	<definition name="APP03" extends="BASE">
+		<put-attribute name="title" value="Bootstrap"/>
+		<put-attribute name="body" value="/WEB-INF/pages/APP03.jsp"/>
+	</definition>
 	<!-- APP stop -->
 		
 </tiles-definitions>

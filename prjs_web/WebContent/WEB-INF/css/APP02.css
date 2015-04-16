@@ -1,0 +1,17 @@
+.tblDemo tr {
+width: 100%;
+display: inline-table;
+}
+
+.tblDemo table{
+ height:300px; 
+}
+.tblDemo thead{
+	width:95%;
+}
+.tblDemo tbody{
+  overflow-y: scroll;
+  height: 200px;
+  width: 100%;
+  position: absolute;
+}

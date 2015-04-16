@@ -32,7 +32,7 @@
 					<span class="glyphicon glyphicon-th-list"></span> App
 				</s:a> --%>
 				<s:a href="APP03_init" cssClass="btn btn-default btn-xs btn-success" style="width:100px">
-					<span class="glyphicon glyphicon-th-list"></span> List App
+					<span class="glyphicon glyphicon-th-list"></span> Bootstrap
 				</s:a>
 			</s:if>
 			<s:if test="%{#admin in info.user.listRoleName}">
