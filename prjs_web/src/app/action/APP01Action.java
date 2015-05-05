@@ -9,6 +9,8 @@ import manager.common.bean.UserBean;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.InterceptorRefs;
+import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,11 @@ import app.bean.PointBean;
 import app.logic.App01LogicIF;
 
 @Controller
+@Namespace("/")
+@InterceptorRefs({
+	@InterceptorRef(value="scope",params={"key","infoValue","session","info","autoCreateSession","true"})
+	, @InterceptorRef("basicStack")
+})
 public class APP01Action{
 	public static final String USER_DEFAULT_ID = "-1";
 	
@@ -42,26 +49,23 @@ public class APP01Action{
 	private App01LogicIF app01Logic;
 	
 	@Action(value="/APP01_init"
-			, interceptorRefs={
-				@InterceptorRef(value="scope",params={"key","infoValue","session","info","autoCreateSession","true"})
-				, @InterceptorRef("basicStack")
-			}
 			, results={
 				@Result(name="success",location="APP01",type="tiles")
 				, @Result(name="failure",location="ERROR", type="tiles")
 			})
 	public String init() {
+		
 		App01DataTrans app01DataTrans = new App01DataTrans();
+		listPoint = new ArrayList<PointBean>();
+		PointBean p1 = new PointBean("2", "2014-01-03", "anh hung");
+		PointBean p2 = new PointBean("1", "2015-01-03", "dai dao");
+		PointBean p3 = new PointBean("3", "2015-02-03", "tieu ngao");
 		app01DataTrans.setMessage("Hello" + info.getUser().getId());
 		info.setDataTrans(app01DataTrans);
 		return "success";
 	}
 	
 	@Action(value="/APP01_loadPoint"
-			, interceptorRefs={
-				@InterceptorRef(value="scope",params={"key","infoValue","session","info","autoCreateSession","true"})
-				, @InterceptorRef("basicStack")
-			}
 			, results={
 				@Result(name="success",type="json",params={"root","listPoint"})
 				

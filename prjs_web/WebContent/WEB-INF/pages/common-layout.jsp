@@ -18,5 +18,26 @@
 	<div>
 		<tiles:insertAttribute name="body" />
 	</div>
+	<div class="container">
+		<div class="row">
+			<div id="myModal" class="modal fade"  data-backdrop="static">
+				<div class="modal-dialog modal-sm" >
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<!-- 							<h4>Confirmation</h4> -->
+						</div>
+						<div class="modal-body">
+<!-- 							<p>Are you alright ?</p> -->
+						</div>
+						<div class="modal-footer">
+							<input type="button" class="btn btn-primary" data-dismiss="modal" value="Close">
+<!-- 							<input type="button" class="btn btn-success" value="OK"> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

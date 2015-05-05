@@ -34,5 +34,8 @@
 		<put-attribute name="body" value="/WEB-INF/pages/APP03.jsp"/>
 	</definition>
 	<!-- APP stop -->
-		
+	<definition name="ORDER" extends="BASE">
+		<put-attribute name="title" value="ORDER"/>
+		<put-attribute name="body" value="/WEB-INF/pages/order.jsp"/>
+	</definition>
 </tiles-definitions>

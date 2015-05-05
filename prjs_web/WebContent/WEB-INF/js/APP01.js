@@ -1,7 +1,17 @@
 $(document).ready(function(){
 	loadPoint();
+	check();
 });
 var arr = [];
+function check(){
+	$("#myTable").tablesorter({
+		headers : {
+			0 : {
+				sorter : false
+			}
+		}
+	});
+}
 function loadPoint() {
 	$('#graphdiv').empty();
 	var obj = new Object();

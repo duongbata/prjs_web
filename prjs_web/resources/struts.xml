@@ -12,8 +12,12 @@
 	<!-- Don't auto generate html -->
 	<constant name="struts.ui.theme" value="simple" />
 	
-	<constant name="struts.devMode" value="true"/>
-
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+	
 	<!-- Max size of multiple file -->
 	<constant name="struts.multipart.maxSize" value="51200000" />
 
@@ -22,21 +26,16 @@
 		<result-types>
 			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
-		<!-- <interceptors>
-			<interceptor name="baseInterceptor" class="manager.common.interceptor.BaseInterceptor"></interceptor>
-			<interceptor-stack name="baseStack">
-				<interceptor-ref name="baseInterceptor"/>
-				<interceptor-ref name="defaultStack"/>
-			</interceptor-stack>
-		</interceptors>
-		<default-interceptor-ref name="baseStack"></default-interceptor-ref> -->
 		<global-results>
 			<result name="error" type="tiles">ERROR</result>
 		</global-results>
 		<global-exception-mappings>
 			<exception-mapping result="error" exception="manager.common.exception.BaseException"></exception-mapping>
 		</global-exception-mappings>
-		<!-- <action name="login"> <result name="success">WEB-INF/pages/login.jsp</result> 
-			</action> -->
+		<!-- <action name="order_init-*-*" class="app.action.OrdersAction" method="init">
+			<param name="id">{1}</param>
+			<param name="name">{2}</param>
+			<result name="success" type="tiles">ORDER</result>
+		</action> -->
 	</package>
 </struts>

@@ -8,6 +8,8 @@
 	<http auto-config="true" use-expressions="true">
 <!-- 		<intercept-url pattern="/A**" access="hasAnyRole('admin','dev','user')"/> -->
 		<intercept-url pattern="/APP*" access="hasAnyRole('admin')"/>
+		<intercept-url pattern="/user*" access="hasAnyRole('admin')"/>
+<!-- 		<intercept-url pattern="/order*" access="hasAnyRole('admin')"/> -->
 		
 		<!-- <intercept-url pattern="/j_spring_security_check" access="IS_AUTHENTICATED_ANONYMOUSLY"/> --> 
 		<!-- <intercept-url pattern="/dangnhap" access="IS_AUTHENTICATED_ANONYMOUSLY"/> --> 

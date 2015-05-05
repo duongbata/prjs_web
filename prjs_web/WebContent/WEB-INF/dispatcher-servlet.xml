@@ -16,6 +16,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		</property>
 	</bean>
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/" />
+<!-- 	<mvc:resources mapping="source/resources/**" location="/WEB-INF/" /> -->
 	<mvc:resources  mapping="/image/**" location="file:///D:/upload/topic/"/>
 	<mvc:annotation-driven/>
 </beans>

@@ -20,3 +20,15 @@ function callAjax() {
 		}
 	});
 }
+
+//Alert manual
+function callAlert(header,body) {
+	var myModal = $('#myModal');
+	var modalHeader = myModal.find('.modal-header');
+	modalHeader.empty();
+	modalHeader.append('<p>'+header+'</p>');
+	var modalBody = myModal.find('.modal-body');
+	modalBody.empty();
+	modalBody.append('<p>'+body+'</p>');
+	$('#myModal').modal('show');
+}
