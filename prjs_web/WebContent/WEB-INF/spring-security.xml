@@ -10,7 +10,7 @@
 		<intercept-url pattern="/APP*" access="hasAnyRole('admin')"/>
 		<intercept-url pattern="/user*" access="hasAnyRole('admin')"/>
 <!-- 		<intercept-url pattern="/order*" access="hasAnyRole('admin')"/> -->
-		
+		<intercept-url pattern="InvalidToken_init*" access="hasAnyRole('admin')"/>
 		<!-- <intercept-url pattern="/j_spring_security_check" access="IS_AUTHENTICATED_ANONYMOUSLY"/> --> 
 		<!-- <intercept-url pattern="/dangnhap" access="IS_AUTHENTICATED_ANONYMOUSLY"/> --> 
 		<access-denied-handler error-page="/WEB-INF/pages/403.jsp"/>

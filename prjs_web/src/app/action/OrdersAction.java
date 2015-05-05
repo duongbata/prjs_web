@@ -17,7 +17,7 @@ import app.bean.PointBean;
 import com.opensymphony.xwork2.ModelDriven;
 
 @Controller
-@Namespace("/")
+
 @InterceptorRefs({
 	@InterceptorRef(value="scope",params={"key","infoValue","session","info","autoCreateSession","true"})
 	, @InterceptorRef("basicStack")
@@ -31,14 +31,12 @@ public class OrdersAction implements ModelDriven<PointBean>{
 	
 	private String name;
 	
-	@Action(value="/order_init-id-*-name-*"
-			, params = {
-				"id","${1}","name","${2}"
-			}
+/*	@Action(value="order_init-*-*"
+			, params = {"id","{1}","name","{2}"}
 			, results={
 				@Result(name="success",location="ORDER",type="tiles")
 				, @Result(name="failure",location="ORDER", type="tiles")
-			})
+			})*/
 	public String init(){
 		System.out.println(id);
 		return "success";

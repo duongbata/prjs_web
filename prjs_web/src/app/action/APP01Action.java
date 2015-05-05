@@ -36,6 +36,8 @@ public class APP01Action{
 	
 	public List<PointBean> listPoint;
 	
+	private String name;
+	
 	/**
 	 * 
 	 */
@@ -55,6 +57,7 @@ public class APP01Action{
 			})
 	public String init() {
 		
+		name = "Dortmund";
 		App01DataTrans app01DataTrans = new App01DataTrans();
 		listPoint = new ArrayList<PointBean>();
 		PointBean p1 = new PointBean("2", "2014-01-03", "anh hung");
@@ -94,6 +97,14 @@ public class APP01Action{
 
 	public void setListPoint(List<PointBean> listPoint) {
 		this.listPoint = listPoint;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
