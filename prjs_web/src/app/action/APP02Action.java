@@ -7,9 +7,13 @@ import java.io.InputStreamReader;
 
 import javax.servlet.http.HttpServletRequest;
 
+import manager.common.bean.InfoValue;
+
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.InterceptorRefs;
+import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.stereotype.Controller;
 
@@ -21,8 +25,15 @@ import app.bean.APP02DataTrans;
 import app.bean.PointBean;
 
 @Controller
+@Namespace("/")
+@InterceptorRefs({
+	@InterceptorRef(value="scope",params={"key","infoValue","session","info","autoCreateSession","true"})
+	, @InterceptorRef("basicStack")
+})
 public class APP02Action implements ModelDriven<APP02DataTrans>{
 	private APP02DataTrans app02DataTrans;
+	
+	private InfoValue info;
 	/*private PointBean point = new PointBean();
 	
 	private PointBean p;*/
@@ -137,5 +148,13 @@ public class APP02Action implements ModelDriven<APP02DataTrans>{
 	
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	public InfoValue getInfo() {
+		return info;
+	}
+
+	public void setInfo(InfoValue info) {
+		this.info = info;
 	}
 }

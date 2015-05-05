@@ -2,4 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <h1>Ban da thuc hien sai thao tac</h1>
+<s:if test="hasActionErrors()">
+<s:actionerror/>
+</s:if>
 <s:a action="APP01_init">Back</s:a>

@@ -174,5 +174,11 @@
 		<artifactId>jstl</artifactId>
 		<version>${jstl.version}</version>
 	</dependency>
+	<!-- Rewrite url -->
+	<dependency>
+	    <groupId>org.tuckey</groupId>
+	    <artifactId>urlrewritefilter</artifactId>
+	    <version>4.0.3</version>
+	</dependency>
   </dependencies>
 </project>

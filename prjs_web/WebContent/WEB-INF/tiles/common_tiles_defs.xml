@@ -39,4 +39,8 @@
 		<put-attribute name="title" value="ORDER"/>
 		<put-attribute name="body" value="/WEB-INF/pages/order.jsp"/>
 	</definition>
+	<definition name="CUSTOMER" extends="BASE">
+		<put-attribute name="title" value="check token"/>
+		<put-attribute name="body" value="/WEB-INF/pages/customer.jsp"/>
+	</definition>
 </tiles-definitions>

@@ -24,22 +24,35 @@
 		</result-types>
 
 		<interceptors>
-			<interceptor-stack name="paramsPrepareParamsStack">
+			<!-- <interceptor-stack name="paramsPrepareParamsStack">
 				<interceptor-ref name="params"/>
 				<interceptor-ref name="prepare"/>
 				<interceptor-ref name="params"/>
+			</interceptor-stack> -->
+			<interceptor-stack name="tokenStack">
+				<interceptor-ref name="token"/>
+				<interceptor-ref name="defaultStack"/>
 			</interceptor-stack>
 		</interceptors>
+		<default-interceptor-ref name="tokenStack"/>
+		
 		<global-results>
 			<result name="error" type="tiles">ERROR</result>
+			<result name="invalid.token" type="tiles">INVALID_TOKEN</result>
 		</global-results>
+		
 		<global-exception-mappings>
 			<exception-mapping result="error" exception="manager.common.exception.BaseException"></exception-mapping>
 		</global-exception-mappings>
-		<action name="order_init-*-*" class="app.action.OrdersAction" method="init">
+		<!-- <action name="order_init-*-*" class="app.action.OrdersAction" method="init">
 			<param name="id">{1}</param>
 			<param name="name">{2}</param>
+			<interceptor-ref name="scope">
+				<param name="key">infoValue</param>
+				<param name="session">info</param>
+				<param name="autoCreateSession">true</param>
+			</interceptor-ref>
 			<result name="success" type="tiles">ORDER</result>
-		</action>
+		</action> -->
 	</package>
 </struts>

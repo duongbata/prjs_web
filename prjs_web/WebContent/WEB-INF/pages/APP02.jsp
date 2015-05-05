@@ -303,5 +303,6 @@
     			</table>
     		</div>
     		<div class="clear"></div>
+    		<s:token/>
 </div>
 

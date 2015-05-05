@@ -40,14 +40,18 @@
 						</s:a>
 					</li>
 					<li>
-						<s:a href="APP01_init">
+						<%-- <s:a href="APP01_init">
 							APP01
-						</s:a>
+						</s:a> --%>
+						<a href="${pageContext.request.contextPath}/APP01_init">APP01</a>
 					</li>
 					<li>
-						<s:a href="order_init">
+						<a href="${pageContext.request.contextPath}/customer-init">token</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/order/12/trung">
 							Order
-						</s:a>
+						</a>
 					</li>
 		        </ul>
 		        <ul class="nav navbar-nav navbar-right">
