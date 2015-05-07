@@ -16,7 +16,7 @@
 		<access-denied-handler error-page="/WEB-INF/pages/403.jsp"/>
 		<form-login login-page="/login"
 					always-use-default-target="true"
-					default-target-url="/logon"
+					default-target-url="/logon2"
 					authentication-failure-url="/login?error"
 					username-parameter="user.id"
 					password-parameter="user.password"/>
