@@ -44,15 +44,15 @@
 		<global-exception-mappings>
 			<exception-mapping result="error" exception="manager.common.exception.BaseException"></exception-mapping>
 		</global-exception-mappings>
-		<!-- <action name="order_init-*-*" class="app.action.OrdersAction" method="init">
+		<action name="order_init-*-*" class="app.action.OrdersAction" method="init">
 			<param name="id">{1}</param>
 			<param name="name">{2}</param>
-			<interceptor-ref name="scope">
+			<!-- <interceptor-ref name="scope">
 				<param name="key">infoValue</param>
 				<param name="session">info</param>
 				<param name="autoCreateSession">true</param>
-			</interceptor-ref>
+			</interceptor-ref> -->
 			<result name="success" type="tiles">ORDER</result>
-		</action> -->
+		</action>
 	</package>
 </struts>
