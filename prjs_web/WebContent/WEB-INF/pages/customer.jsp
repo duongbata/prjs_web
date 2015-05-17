@@ -6,7 +6,7 @@
 		<s:form action="/insert-name">
 			<s:textfield name="name"/>
 			<s:submit value="Submit" cssClass="btn btn-primary"/>
-			<s:token cssClass="cssToken"/>		
+			<s:token/>		
 		</s:form>
 	</div>
 	<div class="row">

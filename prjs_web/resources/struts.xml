@@ -34,7 +34,8 @@
 				<interceptor-ref name="defaultStack"/>
 			</interceptor-stack>
 		</interceptors>
-		<default-interceptor-ref name="tokenStack"/>
+<!-- 		Default use tokenStack -->
+		<!-- <default-interceptor-ref name="tokenStack"/> -->
 		
 		<global-results>
 			<result name="error" type="tiles">ERROR</result>

@@ -59,11 +59,9 @@ tbody td:last-child, thead th:last-child {
 		<s:form action="App01_insertData">
 			<s:textfield name="name" value="%{name}"></s:textfield> <br/>
 			<s:submit value="Submit"/>
-			<s:token/>
 		</s:form>
 	</div>
 </div>
-</script> --%>
 <div class="container">
 	<table class="scroll">
     <thead>
