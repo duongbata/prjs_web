@@ -49,8 +49,13 @@
 						<a href="${pageContext.request.contextPath}/customer-init">token</a>
 					</li>
 					<li>
-						<a href="${pageContext.request.contextPath}/order_init-12-trung">
+						<a href="${pageContext.request.contextPath}/order/12/trung">
 							Order
+						</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/scr01/23/trunks">
+							SCR01
 						</a>
 					</li>
 		        </ul>

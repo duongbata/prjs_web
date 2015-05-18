@@ -8,4 +8,12 @@
 		<from>/order/*/*</from>
 		<to>/order_init-$1-$2</to>	
 	</rule>
+	<rule>
+		<from>/scr01/*/*</from>
+		<to>/SCR01_init-$1-$2</to>	
+	</rule>
+	<rule>
+		<from>/scr01_submit/change/id</from>
+		<to>/SCR01_submit</to>	
+	</rule>
 </urlrewrite>

@@ -43,4 +43,9 @@
 		<put-attribute name="title" value="check token"/>
 		<put-attribute name="body" value="/WEB-INF/pages/customer.jsp"/>
 	</definition>
+<!-- 	SCR -->
+	<definition name="SCR01" extends="BASE">
+		<put-attribute name="title" value="scr01"/>
+		<put-attribute name="body" value="/WEB-INF/pages/SCR01.jsp"/>
+	</definition>
 </tiles-definitions>

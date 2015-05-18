@@ -46,7 +46,7 @@ public class CustomerUserDetailService implements UserDetailsService{
 	}
 	
 	private UserBean getUser(String uid) {
-		if ("1".equals(uid)) {
+		if ("1".equals(uid)||"2".equals(uid)) {
 			UserBean user = new UserBean();
 			user.setId(uid);
 			user.setPassword("1");
